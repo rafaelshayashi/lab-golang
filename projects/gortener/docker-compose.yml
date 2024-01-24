@@ -1,6 +1,7 @@
 version: "3.8"
 services:
   database:
+    container_name: database
     image: postgres:15-alpine
     restart: unless-stopped
     environment:
@@ -11,6 +12,25 @@ services:
       - 5432:5432
     volumes:
       - database:/var/lib/postgresql/data
+    networks:
+      - internal
+  database-admin:
+    container_name: database-admin
+    image: dpage/pgadmin4:8
+    restart: unless-stopped
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL:-admin@localhost.com}
+      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD:-changeme}
+    ports:
+      - 8000:80
+    volumes:
+      - ./database/config/server.json:/pgadmin4/servers.json # more info https://www.pgadmin.org/docs/pgadmin4/latest/import_export_servers.html#json-format
+      - ./database/config/pgpass:/pgadming4/pgpass
+    networks:
+      - internal
 
 volumes:
   database:
+
+networks:
+  internal:
