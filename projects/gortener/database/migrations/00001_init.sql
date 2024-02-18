@@ -1,21 +1,21 @@
 -- +goose Up
 -- +goose StatementBegin
 CREATE TABLE "urls" (
-  "id" integer PRIMARY KEY,
-  "url" varchar,
-  "short_url" varchar UNIQUE,
-  "hash" varchar,
-  "created_at" timestamp DEFAULT (now()),
-  "user_id" integer
+  "id" BIGSERIAL PRIMARY KEY, -- BIGSERIAL is pseudo-type more info https://www.postgresql.org/docs/current/datatype-numeric.html#DATATYPE-SERIAL
+  "url" VARCHAR NOT NULL,
+  "short_url" VARCHAR NOT NULL UNIQUE,
+  "hash" VARCHAR NOT NULL,
+  "created_at" TIMESTAMP DEFAULT (now()),
+  "user_id" INTEGER
 );
 
 CREATE TABLE "users" (
-  "id" integer PRIMARY KEY,
-  "username" varchar,
-  "name" varchar,
-  "email" varchar,
-  "created_at" timestamp DEFAULT (now()),
-  "updated_at" timestamp DEFAULT (now())
+  "id" BIGSERIAL PRIMARY KEY, -- BIGSERIAL is pseudo-type more info https://www.postgresql.org/docs/current/datatype-numeric.html#DATATYPE-SERIAL
+  "username" VARCHAR NOT NULL UNIQUE,
+  "name" VARCHAR,
+  "email" VARCHAR,
+  "created_at" TIMESTAMP DEFAULT (now()),
+  "updated_at" TIMESTAMP DEFAULT (now())
 );
 
 COMMENT ON TABLE "urls" IS 'Store the urls created by a user';
