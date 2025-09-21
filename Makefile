@@ -25,3 +25,12 @@ projects-gortener-start:
 
 projects-gortener-start-server:
 	$(MAKE) -C projects/gortener start-server
+
+projects-pokedex-up:
+	$(MAKE) -C projects/pokedex up
+
+projects-pokedex-down:
+	$(MAKE) -C projects/pokedex down
+
+projects-pokedex-database-connect:
+	$(MAKE) -C projects/pokedex database-connect

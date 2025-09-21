@@ -1,15 +1,14 @@
 run:
 	go run server.go
 
-local-env:
-	docker-compose down -v
-	docker-compose up -d
+up:
+	docker-compose up -d --build
 
-install:
-	docker-compose up
+down:
+	docker-compose down --remove-orphans --volumes
 
-unistall:
-	docker-compose down -v
+database-connect:
+	docker exec -it pokedex-database psql -U postgres
 
 openapi-generate:
 	go install github.com/deepmap/oapi-codegen/cmd/oapi-codegen@v1.11.0

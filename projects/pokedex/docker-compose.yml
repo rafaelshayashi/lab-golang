@@ -1,14 +1,15 @@
-version: '3.8'
 services:
   database:
-    image: postgres:14.1-alpine
+    image: postgres:17.6-alpine3.22
     restart: unless-stopped
+    container_name: pokedex-database
     environment:
       - POSTGRES_USER=${POSTGRES_USER:-postgres}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORK:-changeme}
+      - POSTGRES_DB=pokedex
     ports:
       - '5432:5432'
-    volumes: 
+    volumes:
       - db:/var/lib/postgresql/data
       #- ./init.sql:/docker-entrypoint-initdb.d/create_tables.sql
 volumes:
