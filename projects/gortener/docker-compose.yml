@@ -1,8 +1,7 @@
-version: "3.8"
 services:
   database:
-    container_name: database
-    image: postgres:15-alpine
+    container_name: gortener-database
+    image: postgres:17.6-alpine3.22
     restart: unless-stopped
     environment:
       - POSTGRES_USER=${POSTGRES_USER:-postgres}
@@ -15,8 +14,8 @@ services:
     networks:
       - internal
   database-admin:
-    container_name: database-admin
-    image: dpage/pgadmin4:8
+    container_name: gortener-database-admin
+    image: dpage/pgadmin4:9.8.0
     restart: unless-stopped
     environment:
       - PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL:-admin@localhost.com}

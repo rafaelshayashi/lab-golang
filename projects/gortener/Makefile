@@ -27,3 +27,7 @@ start:
 
 start-server:
 	go run main.go server
+
+http-generate:
+	go get -tool github.com/oapi-codegen/oapi-codegen/v2/cmd/oapi-codegen@v2.5.0
+	go generate ./...

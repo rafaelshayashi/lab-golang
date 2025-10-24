@@ -12,7 +12,6 @@ Some features are:
 
 - [Using SQLC for ORM alternative in Golang, ft. Go-Migrate & PGX](https://medium.com/gravel-engineering/using-sqlc-for-orm-alternative-in-golang-ft-go-migrate-pgx-b9e35ec623b2)
 
-
 ## Build with
 
 - [Go](https://golang.org/)

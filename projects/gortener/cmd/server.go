@@ -24,7 +24,8 @@ package cmd
 import (
 	"fmt"
 
-	"github.com/lab-golang/projects/gortener/handlers"
+	"github.com/lab-golang/projects/gortener/internal/api"
+	"github.com/lab-golang/projects/gortener/internal/handlers"
 	"github.com/labstack/echo/v4"
 	"github.com/spf13/cobra"
 )
@@ -36,8 +37,9 @@ var serverCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("server called")
 
+		gci := &handlers.GortenerServiceInterface{}
 		echo := echo.New()
-		echo.GET("/urls/:id", handlers.GetURL)
+		api.RegisterHandlers(echo, gci)
 		echo.Logger.Fatal(echo.Start(":8080"))
 	},
 }
