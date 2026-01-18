@@ -1,7 +1,8 @@
-go 1.22.5
+go 1.25
 
 use (
 	./exploring/crawlers
+	./exploring/logging
 	./fundamentals
 	./projects/gortener
 	./projects/pokedex

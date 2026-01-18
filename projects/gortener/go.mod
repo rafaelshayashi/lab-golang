@@ -1,6 +1,6 @@
 module github.com/lab-golang/projects/gortener
 
-go 1.22.5
+go 1.25
 
 require (
 	github.com/jackc/pgx/v5 v5.5.2
